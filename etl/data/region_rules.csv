@@ -1,0 +1,9 @@
+code,region,rule_id,type,severity,diet_or_condition,audience,summary,reference_ids
+E102,EU,EU-AZO-CHILD,regulatory_warning,red,child,KIDS,May have an adverse effect on activity and attention in children.,EU1333
+E102,US,US-AZO-SENSITIVE,population_caution,yellow,sulfites,SENSITIVE,Monitor intake for individuals sensitive to artificial dyes.,EU1333
+E120,EU,EU-E120-VEGAN,diet_conflict,yellow,vegan,VEGAN,Not suitable for vegan diets.,EFSA2015
+E120,US,US-E120-VEGAN,diet_conflict,yellow,vegan,VEGAN,Not suitable for vegan diets.,EFSA2015
+E120,EU,EU-E120-ALLERGY,population_caution,yellow,shellfish,ALLERGY,May trigger allergic responses in individuals with insect sensitivities.,EFSA2015
+E330,EU,EU-E330-APPROVED,region_approval,green,,GENERAL,Approved food acidity regulator.,EFSA2006
+E330,EU,EU-E330-NOTE,evidence_annotation,yellow,,GENERAL,Long history of safe use at permitted levels.,EFSA2006
+E330,US,US-E330-APPROVED,region_approval,green,,GENERAL,Generally recognized as safe (GRAS).,EFSA2006

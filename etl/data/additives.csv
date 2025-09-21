@@ -1,0 +1,4 @@
+code,class,evidence_level,plain_summary,dietary_vegan,dietary_vegetarian,dietary_kosher,dietary_halal,source_animal,source_insect,source_plant,source_synthetic
+E102,Colour,Regulatory,"Artificial azo dye requiring a child behaviour warning in the EU.",true,true,true,true,false,false,false,true
+E120,Colour,Consensus,"Colour derived from cochineal insects.",false,false,true,true,true,true,false,false
+E330,Acidulant,Consensus,"Common acidity regulator with broad approval.",true,true,true,true,false,false,true,true

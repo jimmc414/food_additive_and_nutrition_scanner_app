@@ -1,0 +1,226 @@
+{
+  "version": "2025.09.21",
+  "generated_at": "2025-09-21T05:07:14.320224+00:00",
+  "additives": [
+    {
+      "code": "E102",
+      "names": [
+        "E102",
+        "FD&C YELLOW 5",
+        "TARTRAZINE"
+      ],
+      "class": "Colour",
+      "evidence_level": "Regulatory",
+      "plain_summary": "Artificial azo dye requiring a child behaviour warning in the EU.",
+      "dietary": {
+        "vegan": true,
+        "vegetarian": true,
+        "kosher": true,
+        "halal": true
+      },
+      "source": {
+        "animal": false,
+        "insect": false,
+        "plant": false,
+        "synthetic": true
+      },
+      "population_cautions": [],
+      "region_rules": {
+        "EU": [
+          {
+            "id": "EU-AZO-CHILD",
+            "type": "regulatory_warning",
+            "summary": "May have an adverse effect on activity and attention in children.",
+            "audience": [
+              "Kids"
+            ],
+            "referenceIds": [
+              "EU1333"
+            ]
+          }
+        ],
+        "US": [
+          {
+            "id": "US-AZO-SENSITIVE",
+            "type": "population_caution",
+            "summary": "Monitor intake for individuals sensitive to artificial dyes.",
+            "audience": [
+              "Sensitive"
+            ],
+            "condition": "sulfites",
+            "severity": "yellow",
+            "referenceIds": [
+              "EU1333"
+            ]
+          }
+        ]
+      },
+      "references": [
+        {
+          "id": "EU1333",
+          "label": "EU Regulation 1333/2008",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        }
+      ]
+    },
+    {
+      "code": "E120",
+      "names": [
+        "CARMINE",
+        "COCHINEAL",
+        "E120"
+      ],
+      "class": "Colour",
+      "evidence_level": "Consensus",
+      "plain_summary": "Colour derived from cochineal insects.",
+      "dietary": {
+        "vegan": false,
+        "vegetarian": false,
+        "kosher": true,
+        "halal": true
+      },
+      "source": {
+        "animal": true,
+        "insect": true,
+        "plant": false,
+        "synthetic": false
+      },
+      "population_cautions": [],
+      "region_rules": {
+        "EU": [
+          {
+            "id": "EU-E120-ALLERGY",
+            "type": "population_caution",
+            "summary": "May trigger allergic responses in individuals with insect sensitivities.",
+            "audience": [
+              "Allergy"
+            ],
+            "condition": "shellfish",
+            "severity": "yellow",
+            "referenceIds": [
+              "EFSA2015"
+            ]
+          },
+          {
+            "id": "EU-E120-VEGAN",
+            "type": "diet_conflict",
+            "summary": "Not suitable for vegan diets.",
+            "audience": [
+              "Vegan"
+            ],
+            "diet": "vegan",
+            "referenceIds": [
+              "EFSA2015"
+            ]
+          }
+        ],
+        "US": [
+          {
+            "id": "US-E120-VEGAN",
+            "type": "diet_conflict",
+            "summary": "Not suitable for vegan diets.",
+            "audience": [
+              "Vegan"
+            ],
+            "diet": "vegan",
+            "referenceIds": [
+              "EFSA2015"
+            ]
+          }
+        ]
+      },
+      "references": [
+        {
+          "id": "EFSA2015",
+          "label": "EFSA Panel on Food Additives",
+          "url": "https://www.efsa.europa.eu/en/efsajournal/pub/4001"
+        }
+      ]
+    },
+    {
+      "code": "E330",
+      "names": [
+        "CITRIC ACID",
+        "E330",
+        "SODIUM CITRATE"
+      ],
+      "class": "Acidulant",
+      "evidence_level": "Consensus",
+      "plain_summary": "Common acidity regulator with broad approval.",
+      "dietary": {
+        "vegan": true,
+        "vegetarian": true,
+        "kosher": true,
+        "halal": true
+      },
+      "source": {
+        "animal": false,
+        "insect": false,
+        "plant": true,
+        "synthetic": true
+      },
+      "population_cautions": [],
+      "region_rules": {
+        "EU": [
+          {
+            "id": "EU-E330-APPROVED",
+            "type": "region_approval",
+            "summary": "Approved food acidity regulator.",
+            "audience": [
+              "General"
+            ],
+            "approved": true,
+            "referenceIds": [
+              "EFSA2006"
+            ]
+          },
+          {
+            "id": "EU-E330-NOTE",
+            "type": "evidence_annotation",
+            "summary": "Long history of safe use at permitted levels.",
+            "audience": [
+              "General"
+            ],
+            "severity": "yellow",
+            "referenceIds": [
+              "EFSA2006"
+            ]
+          }
+        ],
+        "US": [
+          {
+            "id": "US-E330-APPROVED",
+            "type": "region_approval",
+            "summary": "Generally recognized as safe (GRAS).",
+            "audience": [
+              "General"
+            ],
+            "approved": true,
+            "referenceIds": [
+              "EFSA2006"
+            ]
+          }
+        ]
+      },
+      "references": [
+        {
+          "id": "EFSA2006",
+          "label": "EFSA on Citric Acid",
+          "url": "https://www.efsa.europa.eu/en/efsajournal/pub/1916"
+        }
+      ]
+    }
+  ],
+  "alias_index": {
+    "CARMINE": "E120",
+    "CITRIC ACID": "E330",
+    "COCHINEAL": "E120",
+    "E102": "E102",
+    "E120": "E120",
+    "E330": "E330",
+    "FD&C YELLOW 5": "E102",
+    "SODIUM CITRATE": "E330",
+    "TARTRAZINE": "E102"
+  },
+  "checksum": "ed422302eda196c5aa77f7e1d2e9d6ce00aec7907f40c43f606dc1a22bd738b6"
+}
