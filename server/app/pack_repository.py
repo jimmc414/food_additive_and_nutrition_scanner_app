@@ -16,6 +16,7 @@ class PackRepository:
     self._payload_by_version: Dict[str, PackPayloadModel] = {}
     self._additive_index: Dict[str, AdditiveModel] = {}
     self._region_latest: Dict[str, PackMetaModel] = {}
+    self._latest_payload_version: Optional[str] = None
     self.refresh()
 
   def refresh(self) -> None:
@@ -23,6 +24,7 @@ class PackRepository:
     meta = PackMetaModel.model_validate_json(self._meta_path.read_text(encoding="utf-8"))
     self._payload_by_version[payload.version] = payload
     self._meta_by_version[meta.version] = meta
+    self._latest_payload_version = payload.version
     self._region_latest = {region.upper(): meta for region in meta.regions}
     self._additive_index = {item.code: item for item in payload.additives}
 
@@ -42,4 +44,6 @@ class PackRepository:
 
   @property
   def payload(self) -> PackPayloadModel:
-    return next(iter(self._payload_by_version.values()))
+    if self._latest_payload_version is None:
+      raise RuntimeError("Pack payload has not been loaded")
+    return self._payload_by_version[self._latest_payload_version]

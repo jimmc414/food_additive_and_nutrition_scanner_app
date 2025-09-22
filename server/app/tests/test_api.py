@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import UTC, datetime
 
 from fastapi.testclient import TestClient
@@ -7,6 +8,7 @@ from fastapi.testclient import TestClient
 from etl import build_pack
 from server.app.deps import get_pack_repository, get_telemetry_buffer
 from server.app.main import app
+from server.app.settings import get_settings
 
 
 def setup_module(_: object) -> None:
@@ -53,8 +55,29 @@ def test_telemetry_ingest():
 
 def test_healthcheck():
   client = TestClient(app)
-  resp = client.get("/healthz")
-  assert resp.status_code == 200
-  body = resp.json()
-  assert body["status"] == "ok"
-  assert "pack_version" in body
+  settings = get_settings()
+  repo = get_pack_repository()
+  payload_path = settings.pack_output_dir / "payload.json"
+  meta_path = settings.pack_output_dir / "meta.json"
+  original_payload = payload_path.read_text(encoding="utf-8")
+  original_meta = meta_path.read_text(encoding="utf-8")
+  payload_data = json.loads(original_payload)
+  meta_data = json.loads(original_meta)
+  original_version = payload_data["version"]
+  new_version = f"{original_version}-health"
+  payload_data["version"] = new_version
+  meta_data["version"] = new_version
+  payload_path.write_text(json.dumps(payload_data, indent=2), encoding="utf-8")
+  meta_path.write_text(json.dumps(meta_data, indent=2), encoding="utf-8")
+  try:
+    repo.refresh()
+    resp = client.get("/healthz")
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["status"] == "ok"
+    assert body["pack_version"] == new_version
+    assert repo.payload.version == new_version
+  finally:
+    payload_path.write_text(original_payload, encoding="utf-8")
+    meta_path.write_text(original_meta, encoding="utf-8")
+    repo.refresh()
