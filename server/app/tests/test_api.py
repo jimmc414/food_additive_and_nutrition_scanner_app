@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from fastapi.testclient import TestClient
 
@@ -41,7 +41,7 @@ def test_telemetry_ingest():
   client = TestClient(app)
   payload = {
     "event": "scan_completed",
-    "timestamp": datetime.now(UTC).isoformat(),
+    "timestamp": datetime.now(timezone.utc).isoformat(),
     "platform": "ios",
     "region": "EU",
     "payload": {"additives": 3, "flags": 1},
