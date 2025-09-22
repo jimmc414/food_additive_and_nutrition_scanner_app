@@ -1207,7 +1207,7 @@ if __name__ == "__main__":
 [project]
 name = "nutrition-scanner-server"
 version = "0.1.0"
-dependencies = ["fastapi==0.115.0","uvicorn[standard]==0.30.6","pydantic==2.8.2"]
+dependencies = ["fastapi==0.115.0","uvicorn[standard]==0.30.6","pydantic>=2.0,<3.0"]
 ```
 
 ```bash
