@@ -63,7 +63,7 @@ export function parseIngredients(text: string): Token[] {
 
   const normalized = normalize(text);
   const segments = normalized
-    .split(/[,(\)]/)
+    .split(/[(),\\]/)
     .map((segment) => segment.trim())
     .map((segment) => {
       let cleaned = segment;
