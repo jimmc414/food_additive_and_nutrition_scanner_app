@@ -4,9 +4,10 @@ from __future__ import annotations
 import binascii
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from nacl.signing import VerifyKey
-from nacl.exceptions import BadSignatureError
+if TYPE_CHECKING:
+  from nacl.signing import VerifyKey
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "output"
@@ -17,7 +18,8 @@ class VerificationError(RuntimeError):
   pass
 
 
-def _load_public_key(path: Path) -> VerifyKey:
+def _load_public_key(path: Path) -> "VerifyKey":
+  from nacl.signing import VerifyKey
   if not path.exists():
     raise VerificationError(f"Public key not found at {path}")
   data = path.read_text(encoding="utf-8").strip()
@@ -31,6 +33,8 @@ def _load_public_key(path: Path) -> VerifyKey:
 
 
 def verify_pack(public_key_path: Path | None = None) -> bool:
+  from nacl.exceptions import BadSignatureError
+
   meta_path = OUTPUT_DIR / "meta.json"
   payload_path = OUTPUT_DIR / "payload.json"
   if not meta_path.exists() or not payload_path.exists():

@@ -4,8 +4,10 @@ from __future__ import annotations
 import binascii
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from nacl.signing import SigningKey
+if TYPE_CHECKING:
+  from nacl.signing import SigningKey
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "output"
@@ -16,7 +18,8 @@ class SigningError(RuntimeError):
   pass
 
 
-def _load_private_key(path: Path) -> SigningKey:
+def _load_private_key(path: Path) -> "SigningKey":
+  from nacl.signing import SigningKey
   if not path.exists():
     raise SigningError(
       f"Private key not found at {path}. Generate a key using 'python -m nacl.public' or 'generate_keys.py'."
